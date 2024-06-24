@@ -10,7 +10,7 @@ import time
 
 @token_required
 def zip_file(_user):
-    FILEPATH = f'/home/ubuntu/kltn/SERVER/resources/zip_file/flower-homomorphic_encryption.zip'
+    FILEPATH = f'/home/ubuntu/kltn/SERVER/resources/zip_file/fl_client.zip'
     
     return send_file(FILEPATH, 
                      mimetype='application/zip'

