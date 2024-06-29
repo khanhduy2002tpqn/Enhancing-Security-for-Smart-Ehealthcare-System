@@ -59,6 +59,8 @@ def get_total_client(_current_user):
     print_colored("------[get_total_client]-------", "cyan")
     return  Client().count_client(str(_current_user["_id"]))
 
+
+
 @token_required
 def client_online(_current_user):
     data = request.json
