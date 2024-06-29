@@ -175,15 +175,58 @@ class Client():
             return str(client["_id"])
         else:
             return None
+    #####   khanhduy add    #####
+    # get client_status by client_ip
+    def get_status_by_ip(self, ip):
+        client = clientdb.find_one({"client_ip": ip})
+        if client:
+            return client["client_status"]
+        else:
+            return None
+    ##################################
+    
+    def if_exist(self, ip):
+        """Get a client by its IP address."""
+        
+        # Check if the input IP is valid
+        if not ip:
+            raise ValueError("IP address must be provided")
+
+        # Query the database for the client with the given IP
+        client = clientdb.find_one({"client_ip": ip})
+        print(str(client))
+        # Return {"data": "True"} if the client exists, otherwise {"data": "False"}
+        
+        if client:
+            status = client["client_status"]
+            return {f"status": status}
+        else:
+            return {"status": "No exist client"}
+    
+    # def if_exist(self, ip):
+    #     """Get a client by its IP address."""
+        
+    #     # Check if the input IP is valid
+    #     if not ip:
+    #         raise ValueError("IP address must be provided")
+
+    #     # Query the database for the client with the given IP
+    #     client = clientdb.find_one({"client_ip": ip})
+    #     print(str(client))
+    #     # Return {"data": "True"} if the client exists, otherwise {"data": "False"}
+    #     if client:
+    #         return True
+    #     else:
+    #         return False
     
     def count_client(self, user_id):
         return str(clientdb.count_documents({"creator": user_id}))
     
-    def update_client_status(self, id):
+    def update_client_status(self, ip, status="online"):
         try:
             result = clientdb.update_one(
-                    {"creator": id},
-                    {"$set": {"client_status": "Available"}}
+                    {"client_ip": ip},
+                    {"$set": {f"client_status": status}}
                 )
             if result.matched_count:
                 return {"status": "success", "message": "Client status updated."}

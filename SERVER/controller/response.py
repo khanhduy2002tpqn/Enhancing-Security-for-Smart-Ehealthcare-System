@@ -10,7 +10,7 @@ import time
 
 @token_required
 def zip_file(_user):
-    FILEPATH = f'/home/ubuntu/kltn/SERVER/resources/zip_file/fl_client.zip'
+    FILEPATH = f'/home/ubuntu/fl-project/SERVER/resources/zip_file/fl_client.zip'
     
     return send_file(FILEPATH, 
                      mimetype='application/zip'
@@ -19,7 +19,7 @@ def zip_file(_user):
     
 @token_required
 def sh_file(_user):
-    FILEPATH = '/home/ubuntu/kltn/SERVER/resources/scripts/install.sh'
+    FILEPATH = '/home/ubuntu/fl-project/SERVER/resources/scripts/install.sh'
     
     return send_file(FILEPATH, 
                      mimetype='application/x-sh'

@@ -54,7 +54,7 @@ def load_datasets(num_clients: int, batch_size: int, resize: int, seed: int, num
     }
 
 
-    data_dir = "../data"  # Set the directory for the data
+    data_dir = "/home/ubuntu/fl-project/SERVER/resources/_flower/going_modular/data"  # Set the directory for the data
     
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms[x])
                   for x in ['train', 'val', 'test']}
