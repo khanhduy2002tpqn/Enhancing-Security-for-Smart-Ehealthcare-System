@@ -57,16 +57,34 @@ def delete_client(_current_user):
 @token_required
 def get_total_client(_current_user):
     print_colored("------[get_total_client]-------", "cyan")
-    return  Client().count_client(str(_current_user["_id"]))
+    return  {"count": Client().count_client(str(_current_user["_id"]))}
 
+@token_required
+def get_active_client(_current_user):
+    print_colored("------[get_active_client]-------", "cyan")
+    return  {"count": Client().count_client_status(str(_current_user["_id"]), "online")}   
 
+@token_required                  
+def get_waiting_client(_current_user):
+    print_colored("------[get_waiting_client]-------", "cyan")
+    return  {"count": Client().count_client_status(str(_current_user["_id"]), "Added!")}
+
+@token_required
+def get_training_client(_current_user):
+    print_colored("------[get_training_client]-------", "cyan")
+    return  {"count": Client().count_client_status(str(_current_user["_id"]), "training")}
+@token_required
+def get_error_client(_current_user):
+    print_colored("------[get_error_client]-------", "cyan")
+    return  {"count": Client().count_client_status(str(_current_user["_id"]), "offline")}
 
 @token_required
 def client_online(_current_user):
     data = request.json
     client_ip = data.get('client_ip')
-    if (Client().if_exist(client_ip)["exist"] =="False"):
+    if (Client().if_exist(client_ip)["status"] =="No exist client"):
         return {"status": "Unauthoried client tried to login!"}
+    
     res = requests.get(f"http://{client_ip}:5000/is_online")
     print(res.json()["status"])
     if (str(res.json()["status"])!="True"):

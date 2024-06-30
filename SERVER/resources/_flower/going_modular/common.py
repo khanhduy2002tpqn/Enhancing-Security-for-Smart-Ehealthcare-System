@@ -143,9 +143,9 @@ def parsing(description='PyTorch ImageNet Training'):
                                help='True if we want to use the homomorphic encryption (by default : False)')
     parent_parser.add_argument('--path_keys', type=str, default="secret.pkl",
                                help='Path to get the combo private/public keys')
-    parent_parser.add_argument('--path_public_key', type=str, default="server_key.pkl",
+    parent_parser.add_argument('--path_public_key', type=str, default="fl-project/SERVER/resources/_flower/server_key.pkl",
                                help='Path to get the the public key')
-    parent_parser.add_argument('--path_crypted', type=str, default="server.pkl",
+    parent_parser.add_argument('--path_crypted', type=str, default="fl-project/SERVER/resources/_flower/secret.pkl",
                                help='Path to save the crypted (and not crypted) weights')
 
     # Create the specific commands for the "classic ML"
@@ -164,6 +164,8 @@ def parsing(description='PyTorch ImageNet Training'):
     parser_server.add_argument('--min_fit_clients', type=int, default=2)
     parser_server.add_argument('--min_eval_clients', type=int, default=None)
     parser_server.add_argument('--min_avail_clients', type=int, default=2)
+    parser_server.add_argument('--filename', type=str, default="server",
+                               help='File name to save the log')
 
     parser_server.add_argument('--rounds', default=3, type=int,
                                help='number of rounds (default : 3)')

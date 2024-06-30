@@ -7,6 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from web_base.colored_print import print_colored
 from dotenv import load_dotenv
 load_dotenv()
+# import ast
 
 """
 This is for colorfull loging
@@ -39,9 +40,11 @@ DATABASE_URI=f"mongodb://{MONGODB_CREDENTIAL}{os.getenv('MONGODB_HOST')}:27017/"
 DATABASE_NAME = 'my-database'
 USER_COLLECTION = "users"
 CLIENT_COLLECTION = "clients"
+MODEL_COLLECTION = "models"
 _mongodb = MongoClient(DATABASE_URI)[DATABASE_NAME]
 userdb = _mongodb[USER_COLLECTION]
 clientdb = _mongodb[CLIENT_COLLECTION]
+modeldb = _mongodb[MODEL_COLLECTION]
 x=0
 
 class User:
@@ -222,6 +225,9 @@ class Client():
     def count_client(self, user_id):
         return str(clientdb.count_documents({"creator": user_id}))
     
+    def count_client_status(self, user_id, status):
+        return str(clientdb.count_documents({"creator": user_id, "client_status": status}))
+    
     def update_client_status(self, ip, status="online"):
         try:
             result = clientdb.update_one(
@@ -264,3 +270,145 @@ class Client():
 # print(x)
 
 # Client().delete_by_id("666e4f9943f4ca2f7c8bf417")
+
+class Model:
+    """User Model"""
+    def __init__(self):
+        return
+
+    def create(self, dataset="", starttime="", endtime="", status="False", fit_progress=[]):
+        """Create a new model"""
+        
+        data = {
+                "dataset": dataset,
+                "starttime": starttime,
+                "status": status,
+                "fit_progress": fit_progress
+            }
+        new_model = modeldb.insert_one(data)
+        print(new_model)
+        return self.get_by_id(new_model.inserted_id)
+    
+    def get_by_id(self, user_id):
+        """Get a user by id"""
+        model = modeldb.find_one({"_id": ObjectId(user_id)})
+        if not model:
+            return {"message": "No model found!"}
+        return model
+    
+    def get_id_by_dataset(self, dataset):
+        """Get a user by id"""
+        model = modeldb.find_one({"dataset": dataset})
+        if not model:
+            return {"message": "No model found!"}
+        return model["_id"]
+    
+    def update_status(self, _id):
+        """Get a user by id"""
+        result = modeldb.update_one(
+                    {"_id": ObjectId(_id)},
+                    {"$set": {f"status": "True"}}
+                )
+        if result.matched_count:
+                return {"status": "success", "message": self.get_by_id(_id)}
+        else:
+            return {"status": "failure", "message": "Model not updated!"}
+        
+        
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    
+    def update_fit_progress(self, _id, data):
+        document = self.get_by_id(_id)
+        if document is None:
+            raise ValueError(f"Document with id {_id} not found")
+        
+        if "fit_progress" not in document or not isinstance(document["fit_progress"], list):
+            document["fit_progress"] = []
+
+        document["fit_progress"].append(data)
+        
+        # Update the document in the database
+        modeldb.update_one(
+            {"_id": ObjectId(_id)},
+            {"$set": {"fit_progress": document["fit_progress"]}}
+        )
+
+        return self.get_by_id(_id)  # Return the updated document
+        
+    ############################################
+    ############################################
+    
+    def get_fit_prgress_by_id(self, user_id):
+        """Get a user by id"""
+        model = modeldb.find_one({"_id": ObjectId(user_id)})
+        if not model:
+            return {"message": "No model found!"}
+        return model["fit_progress"]
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    ############################################
+    def update_metrics_centralized(self, _id, data):
+        """Get a user by id"""
+        tmp = self.get_by_id(_id)["metrics_centralized"].append(data)
+        
+        result = modeldb.update_one(
+                    {"_id": ObjectId(_id)},
+                    {"$set": {f"metrics_centralized": tmp}}
+                )
+        if result.matched_count:
+                return {"status": "success", "message": self.get_by_id(_id)}
+        else:
+            return {"status": "failure", "message": "Model not updated!"}
+        
+    def update_losses_centralized(self, _id, data):
+        """Get a user by id"""
+        tmp = self.get_by_id(_id)["losses_centralized"].append(data)
+        
+        result = modeldb.update_one(
+                    {"_id": ObjectId(_id)},
+                    {"$set": {f"losses_centralized": tmp}}
+                )
+        if result.matched_count:
+                return {"status": "success", "message": self.get_by_id(_id)}
+        else:
+            return {"status": "failure", "message": "Model not updated!"}
+        
+    def update_endtime(self, _id, endtime):
+        """Get a user by id"""
+        result = modeldb.update_one(
+                    {"_id": ObjectId(_id)},
+                    {"$set": {f"endtime": endtime}}
+                )
+        if result.matched_count:
+                return {"status": "success", "message": self.get_by_id(_id)}
+        else:
+            return {"status": "failure", "message": "Model not updated!"}
+
+
+# import time
+# starttime = time.time()
+# data = Model().create("Lung x-ray", f"{starttime}")['_id']
+# # Extract the _id
+# # _id = data
+# print(data)
+
+# Model()
+# data = {
+#         "round": "1",
+#         "loss": "0.010219029005348186",
+#         "accuracy": "94.0813810110974",
+#         "time": "877.1706287750276"
+#     }
+
+# data = Model().update_fit_progress("66815108be3b51a5f8aa9f50", data)
+# print(str(data))

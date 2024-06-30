@@ -1,0 +1,16 @@
+FL | INFO flwr 2024-06-30 12:50:01,711 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
+FL | INFO flwr 2024-06-30 12:50:01,782 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
+FL | INFO flwr 2024-06-30 12:50:01,782 | server.py:89 | Initializing global parameters
+FL | INFO flwr 2024-06-30 12:50:01,782 | server.py:272 | Using initial parameters provided by strategy
+FL | INFO flwr 2024-06-30 12:50:01,783 | server.py:91 | Evaluating initial parameters
+FL | INFO flwr 2024-06-22 10:37:08,450 | server.py:125 | fit progress: (1, 0.010219029005348186, {'accuracy': 94.0813810110974}, 877.1706287750276)
+FL | DEBUG flwr 2024-06-22 10:37:08,450 | server.py:173 | evaluate_round 1: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:37:46,857 | server.py:187 | evaluate_round 1 received 2 results and 0 failures
+FL | DEBUG flwr 2024-06-22 10:37:46,858 | server.py:222 | fit_round 2: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:51:31,655 | server.py:236 | fit_round 2 received 2 results and 0 failures
+FL | INFO flwr 2024-06-22 10:51:48,019 | server.py:125 | fit progress: (2, 0.009770335275671215, {'accuracy': 95.37607891491984}, 1756.7398695260054)
+FL | DEBUG flwr 2024-06-22 10:51:48,021 | server.py:173 | evaluate_round 2: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:52:31,111 | server.py:187 | evaluate_round 2 received 2 results and 0 failures
+FL | DEBUG flwr 2024-06-22 10:52:31,117 | server.py:222 | fit_round 3: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 11:06:32,586 | server.py:236 | fit_round 3 received 2 results and 0 failures
+FL | INFO flwr 2024-06-22 11:06:48,174 | server.py:125 | fit progress: (3, 0.01051544614781671, {'accuracy': 95.12946979038225}, 2656.894676526077)

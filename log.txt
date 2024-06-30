@@ -1,90 +1,35 @@
-FL | INFO flwr 2024-06-26 18:05:44,799 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 18:05:44,813 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 18:05:44,813 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 18:05:44,813 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 18:05:44,813 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-26 18:21:34,042 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 18:21:34,104 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 18:21:34,104 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 18:21:34,104 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 18:21:34,104 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-26 18:27:51,713 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 18:27:51,783 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 18:27:51,784 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 18:27:51,784 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 18:27:51,784 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-26 18:33:34,339 | server.py:94 | initial parameters (loss, other metrics): 0.29551976764834176, {'accuracy': 0.06165228113440197}
-FL | INFO flwr 2024-06-26 18:33:34,341 | server.py:104 | FL starting
-FL | INFO flwr 2024-06-26 18:37:56,047 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 18:37:56,122 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 18:37:56,122 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 18:37:56,122 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 18:37:56,122 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-26 19:09:42,885 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 19:09:42,953 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 19:09:42,954 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 19:09:42,954 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 19:09:42,954 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-26 19:15:35,300 | server.py:94 | initial parameters (loss, other metrics): 0.29204242738048775, {'accuracy': 0.18495684340320592}
-FL | INFO flwr 2024-06-26 19:15:35,308 | server.py:104 | FL starting
-FL | INFO flwr 2024-06-26 19:21:57,698 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-26 19:21:57,752 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-26 19:21:57,752 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-26 19:21:57,752 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-26 19:21:57,753 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 11:17:54,230 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-27 11:17:54,286 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-27 11:17:54,286 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-27 11:17:54,286 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-27 11:17:54,286 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 11:57:12,807 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-27 11:57:12,872 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-27 11:57:12,872 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-27 11:57:12,872 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-27 11:57:12,873 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 11:58:58,148 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-27 11:58:58,164 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-27 11:58:58,164 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-27 11:58:58,164 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-27 11:58:58,164 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 12:05:18,427 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-27 12:05:18,488 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-27 12:05:18,488 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-27 12:05:18,489 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-27 12:05:18,489 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 12:11:19,618 | server.py:94 | initial parameters (loss, other metrics): 0.2939366776904989, {'accuracy': 0.12330456226880394}
-FL | INFO flwr 2024-06-27 12:11:19,621 | server.py:104 | FL starting
-FL | INFO flwr 2024-06-27 12:54:20,043 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-27 12:54:20,123 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-27 12:54:20,123 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-27 12:54:20,124 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-27 12:54:20,124 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-27 13:00:08,030 | server.py:94 | initial parameters (loss, other metrics): 0.2871481366868966, {'accuracy': 0.8014796547472256}
-FL | INFO flwr 2024-06-27 13:00:08,031 | server.py:104 | FL starting
-FL | DEBUG flwr 2024-06-27 13:00:08,031 | server.py:222 | fit_round 1: strategy sampled 2 clients (out of 2)
-FL | DEBUG flwr 2024-06-27 13:14:22,249 | server.py:236 | fit_round 1 received 0 results and 2 failures
-FL | INFO flwr 2024-06-28 13:49:41,134 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-28 13:49:41,201 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-28 13:49:41,201 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-28 13:49:41,201 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-28 13:49:41,201 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-28 18:29:18,760 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-28 18:29:18,838 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-28 18:29:18,838 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-28 18:29:18,839 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-28 18:29:18,839 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-28 18:31:35,633 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-28 18:31:35,689 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-28 18:31:35,689 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-28 18:31:35,689 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-28 18:31:35,689 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-28 18:34:01,062 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-28 18:34:01,123 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-28 18:34:01,123 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-28 18:34:01,123 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-28 18:34:01,123 | server.py:91 | Evaluating initial parameters
-FL | INFO flwr 2024-06-28 18:36:47,601 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
-FL | INFO flwr 2024-06-28 18:36:47,636 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
-FL | INFO flwr 2024-06-28 18:36:47,636 | server.py:89 | Initializing global parameters
-FL | INFO flwr 2024-06-28 18:36:47,636 | server.py:272 | Using initial parameters provided by strategy
-FL | INFO flwr 2024-06-28 18:36:47,636 | server.py:91 | Evaluating initial parameters
+FL | INFO flwr 2024-06-22 10:22:09,179 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
+FL | INFO flwr 2024-06-22 10:22:09,193 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
+FL | INFO flwr 2024-06-22 10:22:09,193 | server.py:89 | Initializing global parameters
+FL | INFO flwr 2024-06-22 10:22:09,193 | server.py:272 | Using initial parameters provided by strategy
+FL | INFO flwr 2024-06-22 10:22:09,193 | server.py:91 | Evaluating initial parameters
+FL | INFO flwr 2024-06-22 10:22:31,279 | server.py:94 | initial parameters (loss, other metrics): 0.28718141415851184, {'accuracy': 0.9247842170160296}
+FL | INFO flwr 2024-06-22 10:22:31,279 | server.py:104 | FL starting
+FL | DEBUG flwr 2024-06-22 10:22:43,172 | server.py:222 | fit_round 1: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:36:52,819 | server.py:236 | fit_round 1 received 2 results and 0 failures
+FL | WARNING flwr 2024-06-22 10:36:54,352 | server.py:247 | No fit_metrics_aggregation_fn provided
+FL | INFO flwr 2024-06-22 10:37:08,450 | server.py:125 | fit progress: (1, 0.010219029005348186, {'accuracy': 94.0813810110974}, 877.1706287750276)
+FL | DEBUG flwr 2024-06-22 10:37:08,450 | server.py:173 | evaluate_round 1: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:37:46,857 | server.py:187 | evaluate_round 1 received 2 results and 0 failures
+FL | DEBUG flwr 2024-06-22 10:37:46,858 | server.py:222 | fit_round 2: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:51:31,655 | server.py:236 | fit_round 2 received 2 results and 0 failures
+FL | INFO flwr 2024-06-22 10:51:48,019 | server.py:125 | fit progress: (2, 0.009770335275671215, {'accuracy': 95.37607891491984}, 1756.7398695260054)
+FL | DEBUG flwr 2024-06-22 10:51:48,021 | server.py:173 | evaluate_round 2: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 10:52:31,111 | server.py:187 | evaluate_round 2 received 2 results and 0 failures
+FL | DEBUG flwr 2024-06-22 10:52:31,117 | server.py:222 | fit_round 3: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 11:06:32,586 | server.py:236 | fit_round 3 received 2 results and 0 failures
+FL | INFO flwr 2024-06-22 11:06:48,174 | server.py:125 | fit progress: (3, 0.01051544614781671, {'accuracy': 95.12946979038225}, 2656.894676526077)
+FL | DEBUG flwr 2024-06-22 11:06:48,174 | server.py:173 | evaluate_round 3: strategy sampled 2 clients (out of 2)
+FL | DEBUG flwr 2024-06-22 11:07:28,446 | server.py:187 | evaluate_round 3 received 2 results and 0 failures
+FL | INFO flwr 2024-06-22 11:07:28,446 | server.py:153 | FL finished in 2697.16678104701
+FL | INFO flwr 2024-06-22 11:07:28,447 | app.py:225 | app_fit: losses_distributed [(1, 0.01618842175230384), (2, 0.01669746497645974), (3, 0.015293246135115623)]
+FL | INFO flwr 2024-06-22 11:07:28,448 | app.py:226 | app_fit: metrics_distributed_fit {}
+FL | INFO flwr 2024-06-22 11:07:28,448 | app.py:227 | app_fit: metrics_distributed {'accuracy': [(1, 93.33076329992289), (2, 94.75713184271396), (3, 94.56437933693138)]}
+FL | INFO flwr 2024-06-22 11:07:28,448 | app.py:228 | app_fit: losses_centralized [(0, 0.28718141415851184), (1, 0.010219029005348186), (2, 0.009770335275671215), (3, 0.01051544614781671)]
+FL | INFO flwr 2024-06-22 11:07:28,448 | app.py:229 | app_fit: metrics_centralized {'accuracy': [(0, 0.9247842170160296), (1, 94.0813810110974), (2, 95.37607891491984), (3, 95.12946979038225)]}
+text
+failed
+fj
+nlyfkdbfvskdfv
+eler 
+dkfn
