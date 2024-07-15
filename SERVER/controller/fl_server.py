@@ -167,13 +167,7 @@ def start_train(_current_user):
     }
 
 @token_required
-def monitor_train(_current_user):
-    # IP 
-    # read log file log.txt
-    return {"message": "Monitor training process"}
-
-@token_required
 def get_fit_prgress_by_id(_current_user):
     data = request.json
     model_id = data.get('model_id')
-    return { "data": Model().get_fit_prgress_by_id(model_id)}
+    return Model().get_fit_prgress_by_id(model_id)

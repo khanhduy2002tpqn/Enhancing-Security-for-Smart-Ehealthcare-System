@@ -15,17 +15,55 @@ def add_client(_current_user):
         Add client to db
     """
     data = request.json
-    if(not data):
+    if not data:
         return {
             "message": "No data received"
-            }
+        }, 400
+
     client_id = data.get('client_id')
     client_ip = data.get('client_ip')
+    model = data.get('model')
+    performance = data.get('performance', {})
+    print_colored(str(performance), "green")
     
+    if not all([client_id, client_ip, model, performance]):
+        return {
+            "message": "Invalid data received"
+        }, 400
+
+    # Check if client exists
+    is_exist = Client().if_exist(client_ip)["status"]
+    if is_exist != "No exist client":
+        return {
+            "message": "Client already exists! Please check your client IP"
+        }, 400
+
+    # Check performance criteria (example criteria)
+    required_memory = 15000  # MB
+    required_core_cpu = 8
+    required_device_name = "GPU"
+
+    if int(performance['memory']) < required_memory:
+        print(f"Insufficient memory: {performance['memory']} MB available, {required_memory} MB required")
+        return {  
+            "message": f"Insufficient memory: {performance['memory']} MB available, {required_memory} MB required"
+        }, 400
+
+    
+
+    if required_device_name not in performance['device_name']:
+        print(f"Device name not found: {performance['device_name']}")
+        if int(performance['core_cpu']) < required_core_cpu:
+            print(f"Insufficient CPU cores: {performance['core_cpu']} cores available, {required_core_cpu} cores required")
+            return {
+                "message": f"Insufficient CPU cores: {performance['core_cpu']} cores available, {required_core_cpu} cores required"
+            }, 400
+
     # request to client to check is online
     # print(f"http://{client_ip}:5000/is_online")
     # status = requests.get(f"http://{client_ip}:5000/is_online")
     # print(status.json())
+    
     client_status = "Added!"
     model = data.get('model')
     _id = str(_current_user["_id"])
@@ -91,6 +129,13 @@ def client_online(_current_user):
         return {"message": "Authorized message but server cant find!"}
     update = Client().update_client_status(client_ip)
     return  {"status": "online"}
+
+@token_required
+def update_client_status(_current_user):
+    data = request.json
+    client_ip = data.get('client_ip')
+    status = data.get('status')
+    return Client().update_client_status(client_ip, status)
 
 @token_required
 def is_exist(_current_user):

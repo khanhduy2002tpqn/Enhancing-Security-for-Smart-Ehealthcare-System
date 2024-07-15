@@ -4,6 +4,55 @@ token=$1
 echo "Updating and installing necessary packages"
 sudo apt-get update -y
 sudo apt-get install -y wget git curl python3-pip unzip
+# check ip address
+alter_error(){
+    resp=$(curl -H "Authorization: ${token}" \
+                -H "Content-Type: application/json" \
+                -X POST \
+                -d "{\"client_ip\": \"${ip_address}\", \"status\": \"offline\"}" \
+                http://172.31.0.60:5000/update_client_status)
+    echo "Server response: $resp"
+}
+
+ip_address=$(hostname -I | awk '{print $1}')
+response=$(curl -H "Authorization: ${token}" \
+                -H "Content-Type: application/json" \
+                -X POST \
+                -d "{\"client_ip\": \"${ip_address}\"}" \
+                http://172.31.0.60:5000/is_exist)
+
+status=$(echo $response | jq -r '.status')
+echo "Server response: $status"
+if [ "$status" == "No exist client" ]; then
+echo "No exist client"
+exit 1
+fi
+
+# Gather system performance metrics
+memory=$(free -m | awk 'NR==2{print $2}')
+core_cpu=$(nproc)
+if nvidia-smi &> /dev/null; then
+    echo "GPU is available"
+    device_name=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader)
+else
+    echo "GPU is not available"
+    device_name="CPU"
+fi
+
+if [ $memory -lt 16000 ]; then
+    echo "Memory is not enough"
+    alter_error
+    exit 1
+fi
+
+if [ $device_name == "CPU" ]; then
+    if [ $core_cpu -lt 8 ]; then
+        echo "CPU core is not enough"
+        alter_error
+        exit 1
+    fi
+fi
+
 # Function to check if fl_env exists
 check_fl_env_exists() {
 conda env list | grep "fl_env"
@@ -80,25 +129,7 @@ fi
 
 conda run -n fl_env conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -y
 
-# # check torch, torchvision, torchaudio are exist
-# if conda run -n fl_env pip list | grep "torch"; then
-# echo "Torch already exists."
-# else
-# conda run -n fl_env pip install torch --index-url https://download.pytorch.org/whl/cu118
-# fi
-# # check torchvision are exist
-# if conda run -n fl_env pip list | grep "torchvision"; then
-# echo "Torchvision already exists."
-# else
-# conda run -n fl_env pip install torchvision --index-url https://download.pytorch.org/whl/cu118
-# fi
-
-# # check torchaudio are exist
-# if conda run -n fl_env pip list | grep "torchaudio"; then
-# echo "Torchaudio already exists."
-# else
-# conda run -n fl_env pip install torchaudio --index-url https://download.pytorch.org/whl/cu118
-# fi
+# check if flwr exists
 
 
 if conda run -n fl_env  pip list | grep "flwr"; then

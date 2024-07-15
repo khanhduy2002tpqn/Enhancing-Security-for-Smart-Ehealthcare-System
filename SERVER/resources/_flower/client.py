@@ -1,7 +1,8 @@
 import torch.nn.functional
 import flwr as fl
+from flwr.common import logger
 from going_modular import *
-
+from logging import WARNING, INFO
 """
 Script to define the client side of the federated learning pipeline with Flower.
 """
@@ -70,10 +71,12 @@ class FlowerClient(fl.client.NumPyClient):
 
         criterion = torch.nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(self.net.parameters(), lr=0.0001)
-
+        start_time = time.time()
         results = engine.train(self.net, self.trainloader, self.valloader, optimizer=optimizer, loss_fn=criterion,
                                epochs=local_epochs, device=self.device)
-
+        end_time = time.time()
+        training_time = end_time - start_time
+        logger.log(INFO, f"Training time: {training_time:.2f} s")
         if self.save_results:
             save_graphs(self.save_results, local_epochs, results, f"_Client {self.cid}")
 

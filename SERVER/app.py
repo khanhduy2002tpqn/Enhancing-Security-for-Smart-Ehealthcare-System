@@ -21,8 +21,8 @@ app = FlaskAppWrapper(flask_app)
 from controller.hello_world import hello_world
 from controller.user import add_user, login
 from controller.client import *
-from controller.fl_server import start_train, monitor_train, get_fit_prgress_by_id
-from controller.response import zip_file, sh_file
+from controller.fl_server import start_train, get_fit_prgress_by_id
+from controller.response import *
 
 
 # Add route
@@ -39,11 +39,14 @@ app.add_endpoint('/sh_file', 'sh_file', sh_file)
 app.add_endpoint('/is_exist', 'is_exist', is_exist, ["POST"])
 app.add_endpoint('/client_online', 'client_online', client_online, ["POST"])
 app.add_endpoint('/get_fit_prgress_by_id', 'get_fit_prgress_by_id', get_fit_prgress_by_id, ["POST"])
+app.add_endpoint('/update_client_status', 'update_client_status', update_client_status, ["POST"])
 # app.add_endpoint('monitor_train', 'monitor_train', monitor_train, ["GET"])
 app.add_endpoint('/get_active_client', 'get_active_client', get_active_client, ["GET"])
 app.add_endpoint('/get_waiting_client', 'get_waiting_client', get_waiting_client, ["GET"])
 app.add_endpoint('/get_training_client', 'get_training_client',get_training_client, ["GET"])
 app.add_endpoint('/get_error_client', 'get_error_client', get_error_client, ["GET"])
+app.add_endpoint('/install_file', 'install_file', install_file, ["GET"])
+
 
 
 

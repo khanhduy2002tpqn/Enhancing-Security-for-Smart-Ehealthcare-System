@@ -1,6 +1,6 @@
 import torch.nn.functional
 from typing import Optional, Callable, Union
-from logging import WARNING
+from logging import WARNING, INFO
 import flwr.server.strategy
 from flwr.server.client_proxy import ClientProxy
 from flwr.server.client_manager import ClientManager
@@ -218,11 +218,10 @@ class FedCustom(fl.server.strategy.Strategy):
         # Same function as FedAvg(Strategy)
         if not results:
             return None, {}
-
         # Do not aggregate if there are failures and failures are not accepted
         if not self.accept_failures and failures:
             return None, {}
-
+        start_time_aggregate = time.time()
         # Convert results parameters --> array matrix
         weights_results = [
             (parameters_to_ndarrays_custom(fit_res.parameters, self.context_client), fit_res.num_examples)
@@ -245,6 +244,8 @@ class FedCustom(fl.server.strategy.Strategy):
         """Aggregate model weights using weighted average and store checkpoint"""
         aggreg_fit_checkpoint(server_round, parameters_aggregated, central, args.model_save,
                               self.context_client, args.path_crypted)
+        end_time_aggregate = time.time()
+        logger.log(INFO, f"Aggregation time: {end_time_aggregate - start_time_aggregate}")
         return parameters_aggregated, metrics_aggregated
 
     def num_evaluation_clients(self, num_available_clients: int) -> Tuple[int, int]:

@@ -6,9 +6,9 @@ import os
 # For the homomorphic encryption
 import pickle
 import tenseal as ts
-from flwr.common import NDArray, NDArrays, Parameters
+from flwr.common import NDArray, NDArrays, Parameters, logger
 from functools import reduce
-
+from logging import WARNING, INFO
 
 # /////////////////////// Homomorphic Encryption \\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -284,6 +284,7 @@ def crypte(client_w, context_c):
     :return: a list of Layer objects (crypted weights or not)
     """
     encrypted = []
+    start_time_global = time.time()
     for name_layer, weight_array in client_w.items():
         start_time = time.time()
         if name_layer == 'fc3.weight':
@@ -293,7 +294,9 @@ def crypte(client_w, context_c):
             encrypted.append(Layer(name_layer, weight_array))
 
         print(name_layer, (time.time() - start_time))
-
+    end_time_global = time.time()
+    crypte_time = end_time_global - start_time_global
+    logger.log(INFO, f"Crypte time: {crypte_time:.2f} s")
     # return [CryptedLayer(name_layer, weight_array, context_c) for name_layer, weight_array in client_w.items()]
     return encrypted
 

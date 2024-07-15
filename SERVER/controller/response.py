@@ -24,3 +24,9 @@ def sh_file(_user):
     return send_file(FILEPATH, 
                      mimetype='application/x-sh'
                     )
+def install_file():
+    FILEPATH = '/home/ubuntu/fl-project/SERVER/resources/scripts/login.sh'
+    
+    return send_file(FILEPATH, 
+                     mimetype='application/x-sh'
+                    )

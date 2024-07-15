@@ -1,0 +1,6 @@
+FL | INFO flwr 2024-06-30 17:57:25,468 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=3, round_timeout=None)
+FL | INFO flwr 2024-06-30 17:57:25,528 | app.py:175 | Flower ECE: gRPC server running (3 rounds), SSL is disabled
+FL | INFO flwr 2024-06-30 17:57:25,528 | server.py:89 | Initializing global parameters
+FL | INFO flwr 2024-06-30 17:57:25,528 | server.py:272 | Using initial parameters provided by strategy
+FL | INFO flwr 2024-06-30 17:57:25,528 | server.py:91 | Evaluating initial parameters
+FL | INFO flwr 2024-06-22 11:07:28,448 | app.py:229 | app_fit: metrics_centralized {'accuracy': [(0, 0.9247842170160296), (1, 94.0813810110974), (2, 95.37607891491984), (3, 95.12946979038225)]}
